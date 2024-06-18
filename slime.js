@@ -1,4 +1,5 @@
 var isAnimating = false;
+var animationDelay = 1000;
 var currentFrame = 0;
 var barTop, barBottom;
 var barTopY = -10;
@@ -214,9 +215,15 @@ function getPointOnXAxis(path, xValue) {
 
 function init() {
     
-    // create top and bottom bars
     currentFrame = 0;
-    isAnimating = (document.location.hash == '');
+    isAnimating = false;
+    if (document.location.hash == '') {
+        setTimeout(function() {
+            isAnimating = true;
+        }, animationDelay);
+    }
+
+    // create top and bottom bars
     barTop = new Path();
     // barBottom = new Path();
     createBarSegment();

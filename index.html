@@ -20,12 +20,14 @@
 <body>
     <pre id="bg-code"><code></code></pre>
     <div id="nav" class="flex-center">
-        <a class="nav-left" href="#home" data-action="displaySection">
-            <img id="nav-logo" src="images/mwlogo-large.png">
-            <span>Michael Walling</span>
-        </a>
+        <div class="nav-left">
+            <a href="/">
+                <img id="nav-logo" src="images/mwlogo-large.png">
+                <span>Michael Walling</span>
+            </a>
+        </div>
         <div class="nav-right">
-            <a href="#projects" data-action="displaySection">
+            <a href="#projects">
                 <div class="bg"></div>
                 <span>Projects</span>
             </a>
@@ -41,28 +43,39 @@
     </div>
 
     <div id="main-container">
-        <section class="home flex-center">
-            <h1 id="main-header" class="text-center">Oh hey, I'm Michael.<br>I'm a...</h1>
-            <div class="wheel-container">
-                <div class="wheel left flex-center"></div>
-                <div class="wheel right flex-center"></div>
+        <section id="home" class="flex-center">
+            <div>
+                <h1 class="text-center">Hi, I'm Michael.</h1>
+                <br><br>
+                <h1 class="dynamic-size" style="font-weight:300">
+                    I am a website developer passionate about creating unique and simple designs.
+                    <br><br>
+                    Scroll down to see my latest work and discover how I can assist you in your next web development project.
+                </h1>
+                <br><br>
+                <h1 class="text-center">
+                    <i class="fas fa-arrow-down"></i>
+                </h1>
+            </div>
+            <div>
+
             </div>
         </section>
-        <section class="projects" style="display:none">
+        <section id="projects" class="flex-center">
+            <h1 class="text-center" style="font-weight:300">Projects</h1>
             <div class="timeline-group" data-icon="book">
                 <div class="timeline-year">
                     <div>2020</div>
-                    <div class="subtitle"><b>to Present</b></div>
+                    <div class="subtitle">to Present</div>
                 </div>
                 <div class="timeline-content">
-                    <h1>
+                    <div class="timeline-title">
                         Fathom Reads
-                        <a class="project-link" href="https://fathomreads.com/" target="_blank"><i class="fas fa-link"></i></a>
-                    </h1>
+                        <a class="project-link" href="https://www.fathomreads.com/" target="_blank"><i class="fas fa-link"></i></a>
+                    </div>
                     <div class="subtitle">A multilingual eBook platform for core-subject learning</div>
                     <div class="timeline-content-box">
-                        Some of the key features I worked on:
-                        <br><br>
+                        <div>Some of the key features I worked on:</div>
                         <ul>
                             <li>Designed and developed the eBook Library, various eBook features, eBook UI.</li>
                             <li>Developed dashboards for all user types such as school admins, teachers, and students.</li>
@@ -74,7 +87,7 @@
             <div class="timeline-group" data-icon="circle-user">
                 <div class="timeline-year">2024</div>
                 <div class="timeline-content">
-                    <h1>My Personal Website</h1>
+                    <div class="timeline-title">My Personal Website</div>
                     <div class="timeline-content-box">
                         I created this personal portfolio to showcase my web development skills and projects. Here, you will find a collection of my work, including web applications, responsive designs, and other interactive features.
                     </div>
@@ -83,42 +96,51 @@
             <div class="timeline-group">
                 <div class="timeline-year">2022</div>
                 <div class="timeline-content">
-                    <h1>
+                    <div class="timeline-title">
                         Word Guesser
-                        <a class="project-link" href="https://fathomreads.com/games/wordguesser/" target="_blank"><i class="fas fa-link"></i></a>
-                    </h1>
+                        <a class="project-link" href="https://www.fathomreads.com/games/wordguesser/" target="_blank"><i class="fas fa-link"></i></a>
+                    </div>
                     <div class="subtitle">A Wordle-like game with improvements & new features</div>
                     <div class="timeline-content-box">
-                        As a fan of the game Wordle I felt that the game was missing some features so I decided to make my own version of the game in JavaScript. Some improvements to the standard game were:
-                        <br><br>
+                        <div>As a fan of the game Wordle I felt that the game was missing some features so I decided to make my own version of the game in JavaScript. Some improvements to the standard game were:</div>
                         <ul>
                             <li>A calendar for each word of the day where you can track your scores for the month</li>
                             <li>2 additional game modes: Practice & Timed</li>
                             <li>Games including words with 4 to 7 letters</li>
                         </ul>
                     </div>
+                    <div class="timeline-content-box p-0">
+                        <video autoplay loop muted>
+                            <source src="videos/wordguesser.mp4" type="video/mp4">
+                        </video>
+                    </div>
                 </div>
             </div>
             <div class="timeline-group" data-icon="palette">
                 <div class="timeline-year">2021</div>
                 <div class="timeline-content">
-                    <h1>
+                    <div class="timeline-title">
                         Coloring Pages
-                        <a class="project-link" href="https://fathomreads.com/games/color/?img=Blizzard-1" target="_blank"><i class="fas fa-link"></i></a>
-                    </h1>
+                        <a class="project-link" href="https://www.fathomreads.com/games/color/?img=Blizzard-1" target="_blank"><i class="fas fa-link"></i></a>
+                    </div>
                     <div class="subtitle">A simple SVG coloring app</div>
                     <div class="timeline-content-box">
                         Created for Fathom Reads, this coloring app uses black & white SVG images and allows users to color in the white elements.
+                    </div>
+                    <div class="timeline-content-box p-0">
+                        <video autoplay loop muted>
+                            <source src="videos/coloringpages.mp4" type="video/mp4">
+                        </video>
                     </div>
                 </div>
             </div>
             <div class="timeline-group" data-icon="music">
                 <div class="timeline-year">2019</div>
                 <div class="timeline-content">
-                    <h1>
+                    <div class="timeline-title">
                         Music-to-Color
                         <a class="project-link" href="https://wallingm.github.io/Music-to-Color/" target="_blank"><i class="fas fa-link"></i></a>
-                    </h1>
+                    </div>
                     <div class="subtitle">A MIDI color organ and chromesthesia visualizer</div>
                     <div class="timeline-content-box">
                         This web application was created as my capstone project in college. The main goal was to allow someone to play a musical instrument via MIDI and receive a color-based representation of each note in real time.
