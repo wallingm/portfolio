@@ -1,5 +1,6 @@
 :root {
     --bg-color: #1ee384;
+    --bg-color-50: #1ee38480;
     --nav-height: 60px;
     --timeline-shadow: 8px -8px 0 -3px #11111110;
 }
@@ -22,36 +23,49 @@ h1.dynamic-size { font-size:min(44px, calc((4vh + 4vw) / 2)); }
 #bg-code { position:fixed; top:0; left:0; width:100%; height:100%; margin:0; font-size:12px; opacity:0.5; overflow:hidden; background:none !important }
 .dark-mode #bg-code { display:none }
 
-#slime, #slime-bg { position:fixed; bottom:0; left:0; width:100%; height:100%; /*background-color:#111*/ }
+#slime, #slime-bg { position:fixed; bottom:0; left:0; width:100%; height:100%; }
 .dark-mode #slime,
-.dark-mode #slime-bg { display:none }
+.dark-mode #slime-bg { display:none !important }
 #slime-bg { background-color:var(--bg-color) }
 
+.typewriter.active:after { content:'|'; display:inline-block; color:transparent; background-color:#111; width:3px; }
+.typewriter.waiting:after { animation:anim-blinking-cursor 1s step-start infinite }
+
 #spotlight { display:block; position:fixed; top:-200%; left:-185%; height:400%; width:400%; z-index:10; background-image: radial-gradient(circle at center, transparent, rgba(0, 0, 0, 0.97) 8%); transform:skewX(-5deg); pointer-events:none }
+@media (pointer: coarse) {
+    #spotlight { transition:1s ease }
+}
 
-
-#nav { position:fixed; top:0; left:0; width:100%; height:var(--nav-height); color:#111; background-color:transparent; justify-content:space-between; padding:10px 40px; transition:color 1s ease; user-select:none; pointer-events:none; z-index:10; }
+#nav { position:fixed; top:0; left:0; width:100%; height:var(--nav-height); color:#111; justify-content:space-between; padding:10px 40px; transition:color 1s ease; user-select:none; pointer-events:none; z-index:10; transition:background-color 1s ease, box-shadow 1s ease; }
+body:not(.dark-mode) #nav.backdrop { background-color:var(--bg-color);box-shadow:0 0 10px #11111140, 0 0 100px var(--bg-color); }
+@supports (backdrop-filter: blur(10px)) {
+     body:not(.dark-mode) #nav.backdrop { background-color:var(--bg-color-50); backdrop-filter:blur(10px); }
+}
 #nav a { display:inline-block; padding:10px 15px; border-radius:4px; transition:.3s ease; cursor:pointer; position:relative; pointer-events:auto; }
-.nav-left { font-weight:bold; animation:anim-fade-in-right 1s ease; animation-delay:0.5s; animation-fill-mode:backwards; }
-.nav-right { animation:anim-fade-in-left 1s ease; animation-delay:1s; animation-fill-mode:backwards; }
+#nav-logo { width:20px; height:auto; vertical-align:top; margin-right:5px; border-radius:2px; transform:skewX(-10deg); }
+.nav-left { flex:1 0 auto; font-weight:bold; animation:anim-fade-in-right 1s ease; animation-delay:0.5s; animation-fill-mode:backwards; }
+.nav-right { display:flex; animation:anim-fade-in-left 1s ease; animation-delay:1s; animation-fill-mode:backwards; }
+.nav-right a:not(:first-of-type) { margin-left:4px; }
 .nav-right a:hover { transform:scale(1.05); }
 .nav-right a:active { transform:scale(1); transition:none }
 .nav-right a .bg { position:absolute; top:0; left:0; width:100%; height:100%; background-color:#11111110; transform:skewX(-10deg); border-radius:8px; transition:.3s ease }
 /* .dark-mode .nav-right a .bg { background-color:#ffffff20 } */
 .nav-right a:not(.button) .bg { opacity:0; }
 .nav-right a:not(.button):hover .bg { opacity:1; }
-#nav-logo { width:20px; height:auto; vertical-align:top; margin-right:5px; border-radius:2px; transform:skewX(-10deg); }
-
+#toggle-mobile-menu { display:none !important; font-size:26px; }
 
 #main-container { position:absolute; width:100%; padding:0 var(--nav-height); z-index:5; }
 section { animation:anim-fade-in 3s ease }
 section#home { height:100vh; flex-direction:column; opacity:1; }
 section#home h1 { max-width:1200px }
+section#home .icon-bottom a { display:block; animation:anim-bounce-down 1s ease infinite }
+section#home .icon-bottom a:hover { text-shadow:0 -4px 20px #11111180 }
 
 section#projects { flex-direction:column; align-items:center; width:100%; margin:var(--nav-height) 0; }
-section#projects > h1 { text-align:center; margin-bottom:var(--nav-height); padding:20px 0; }
+section#projects > h1 { text-align:center; padding:var(--nav-height) 0; }
 .project-link { display:inline-block; font-size:18px; opacity:.33; transform:translateY(-2px); margin-left:2px }
 .project-link:hover { opacity:1 }
+#projects video { width:100%; height:auto; vertical-align:top; }
 .timeline-group { display:flex; width:100%; max-width:600px;  position:relative; opacity:.25; transition:opacity 1s ease }
 .timeline-group:not(:first-of-type) { margin-top:var(--nav-height); }
 .timeline-group .subtitle { font-size:16px; font-weight:300; line-height:normal; }
@@ -81,12 +95,21 @@ section#projects > h1 { text-align:center; margin-bottom:var(--nav-height); padd
     .timeline-line-container { transform:translate(10px, 5px); }
 }
 
+@media only screen and (max-width: 660px) {
+    #main-container, #nav { padding:0 15px; }
+}
+@media only screen and (max-width: 550px) {
+    #toggle-mobile-menu { display:block !important; }
+    .nav-right { display:none; flex-direction: column;position: fixed;top: 80px;right: 0;align-items: center;margin: 10px;padding: 10px;font-size: 36px;border-radius: 10px;background-color: var(--bg-color);backdrop-filter: blur(10px);border: 2px solid #111;box-shadow: 0 40px 80px #11111180; }
+    .nav-right a { width:100%; text-align:center; border-radius:0 !important }
+    .nav-right a:not(:first-of-type) { margin-left:0; margin-top:4px; border-top:2px solid #11111120 }
+    .nav-right a .bg { transform:skewX(0) }
+    .nav-right.display-mobile-menu { display:block !important; animation-delay:0s; }
 
-#projects video { width:100%; height:auto; vertical-align:top; }
-
-
-@media only screen and (max-width: 555px) {
-    #main-container { padding:0 15px; }
+    .timeline-year { margin-right:10px; }
+    .timeline-year .year-text { transform:rotate(-90deg) translate(-20px, -20px);}
+    .timeline-dot,
+    .timeline-line-container { transform:translate(-45px, 5px); }
 }
 
 /* animations */
@@ -118,4 +141,14 @@ section#projects > h1 { text-align:center; margin-bottom:var(--nav-height); padd
     0% { opacity:0; height:0%; }
     66% { opacity:1; }
     100% { opacity:1; height:100%; }
+}
+@keyframes anim-bounce-down {
+    0% { transform:translateY(0px); }
+    50% { transform:translateY(20px); }
+    100% { transform:translateY(0px); }
+}
+@keyframes anim-blinking-cursor {
+    0% { opacity:1 }
+    50% { opacity:0 }
+    100% { opacity:1 }
 }
