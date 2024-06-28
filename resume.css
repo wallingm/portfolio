@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6 { margin:0; }
 .contact-data > div { font-size:14px; font-weight:500 }
 
 
-#resume-container { width:100%; min-height:100vh; min-width:var(--doc-width); padding:40px 20px }
+#resume-container { width:100%; min-height:100vh; min-width:var(--doc-width); padding:20px }
 #resume { background-color:#fff; width:var(--doc-width); max-height:var(--doc-height); padding:10px; border-radius:2px; box-shadow:0 0 10px #33333380; overflow:hidden; animation:anim-fade-in-zoom 2s; }
 #resume-head { display:flex; justify-content:space-between; background-color:#133e83; color:#fff; padding:20px; border-radius:8px; position:relative; /* text-shadow:-3px -3px 8px #11111180; box-shadow:-4px -4px 10px #11111180; */ }
 #resume-head-left { width:70% }
@@ -60,4 +60,9 @@ h1, h2, h3, h4, h5, h6 { margin:0; }
 @keyframes anim-fade-in-zoom {
     0% { opacity:0; transform:scale(0.9); }
     100% { opacity:1; transform:scale(1); }
+}
+
+@media print {
+    #resume { box-shadow:none }
+    #profile-image { box-shadow: 0 0 0 4px #fff; }
 }
